@@ -1,27 +1,32 @@
 import './MainContentDescriptionArea.css';
 import React from 'react';
+import SocialContext from '../../contexts/SocialCardContext';
 
-const MainContentDescriptionArea = props => {
+class MainContentDescriptionArea extends React.Component {
+    static contextType = SocialContext;
 
-    const showDesc = () => {
-        if (!props.product) {
+    showDesc = () => {
+        const {product, productDesc, webAddress} = this.context;
+        if (!product) {
             return null;
         } else {
             return (
                 <div className="descContainer">
-                    <h2>{props.product}</h2>
-                    <p>{props.productDesc}</p>
-                    <p className="makeLightGrey">{props.webAddress}</p>
+                    <h2>{product}</h2>
+                    <p>{productDesc}</p>
+                    <p className="makeLightGrey">{webAddress}</p>
                 </div>
             )
         }
-    }
+    };
 
-    return (
-        <div>
-            {showDesc()}
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                {this.showDesc()}
+            </div>
+        )
+    }
 }
 
 export default MainContentDescriptionArea;

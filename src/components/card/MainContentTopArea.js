@@ -1,10 +1,12 @@
 import './MainContentTopArea.css';
 import React from 'react';
+import SocialContext from '../../contexts/SocialCardContext';
 
-const MainContentTopArea = props => {
+class MainContentTopArea extends React.Component {
+    static contextType = SocialContext;
 
     //changing light colors for darker colors in background
-    const checkColor = color => {
+    checkColor = color => {
         switch (color) {
             case 'azure':
                 color = 'red';
@@ -31,40 +33,42 @@ const MainContentTopArea = props => {
                 break;
         }
         return color;
-    }
+    };
 
-    const showTopContent = () => {
-        if (!props.avatar) {
+    showTopContent = () => {
+        const {avatar, color, firstName, lastName, personalPic, product} = this.context;
+        if (!avatar) {
             return null;
         } else {
-            const {color} = props;
-            let correctColor = checkColor(color);
+            let correctColor = this.checkColor(color);
             return (
                 <div style={{
                     backgroundColor: `${correctColor}`,
                     borderRadius: '10px 10px 0 0'
                 }}>
                     <div className="topAreaContainer">
-                        <img className="avatarMainContent" src={props.avatar} alt="" />
-                        <h1>{props.product}</h1>
+                        <img className="avatarMainContent" src={avatar} alt="" />
+                        <h1>{product}</h1>
                         <div className="nameContainer">
                             <span className="nameOfPerson"
                                   style={{color: `${correctColor}`
                             }}>
-                                {`${props.firstName} ${props.lastName}`}
+                                {`${firstName} ${lastName}`}
                             </span>
-                            <img className="personalPic" src={props.personalPic} alt="" />
+                            <img className="personalPic" src={personalPic} alt="" />
                         </div>
                     </div>
                 </div>
             )
         }
+    };
+    render() {
+        return (
+            <div>
+                {this.showTopContent()}
+            </div>
+        )
     }
-    return (
-        <div>
-            {showTopContent()}
-        </div>
-    )
 }
 
 export default MainContentTopArea;
