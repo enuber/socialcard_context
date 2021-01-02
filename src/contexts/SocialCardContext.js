@@ -13,13 +13,14 @@ export class SocialCardStore extends React.Component {
     componentDidMount() {
         const socialCardArr = generateList();
         this.setState({socialCardArr});
-    };
+    }
+
     //In this case the state is generated when the application starts. So we are only sharing access to the
     //state. we use children because everything that this component surrounds will then have access to the information inside
     //this component
     render() {
         return(
-            <Context.Provider value={this.state}>
+            <Context.Provider value={{...this.state}}>
                 {this.props.children}
             </Context.Provider>
         )

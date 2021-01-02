@@ -36,7 +36,7 @@ class MainContentTopArea extends React.Component {
     };
 
     showTopContent = () => {
-        const {avatar, color, firstName, lastName, personalPic, product} = this.context;
+        const {avatar, color, firstName, lastName, personalPic, product} = this.context.socialCardArr[this.props.id];
         if (!avatar) {
             return null;
         } else {

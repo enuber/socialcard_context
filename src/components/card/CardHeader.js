@@ -6,7 +6,7 @@ class CardHeader extends React.Component {
     static contextType = SocialContext;
 
     showContent = () => {
-        const {companyName, avatar, firstName, lastName, randomDate} = this.context;
+        const {companyName, avatar, firstName, lastName, randomDate} = this.context.socialCardArr[this.props.id];
         if (!companyName) {
            return null;
         } else {

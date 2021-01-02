@@ -11,8 +11,8 @@ class App extends React.Component {
         const cards = socialCardArr.map(card =>
             (
                 <CardHolder key={card.key}>
-                    <CardHeader/>
-                    <CardMainContent/>
+                    <CardHeader id={card.key} />
+                    <CardMainContent id={card.key} />
                 </CardHolder>
             )
         );
@@ -22,7 +22,7 @@ class App extends React.Component {
     render() {
         const { socialCardArr } = this.context;
         console.log(socialCardArr);
-        if (!socialCardArr) {
+        if (socialCardArr.length === 0) {
             return(
                 <div>
                     <h2>Social Cards - React Using Context</h2>

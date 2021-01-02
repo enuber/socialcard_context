@@ -6,7 +6,7 @@ class MainContentDescriptionArea extends React.Component {
     static contextType = SocialContext;
 
     showDesc = () => {
-        const {product, productDesc, webAddress} = this.context;
+        const {product, productDesc, webAddress} = this.context.socialCardArr[this.props.id];
         if (!product) {
             return null;
         } else {

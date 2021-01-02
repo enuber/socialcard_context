@@ -3,11 +3,11 @@ import React from 'react';
 import MainContentTopArea from './MainContentTopArea';
 import MainContentDescriptionArea from './MainContentDescriptionArea';
 
-const CardMainContent = () => {
+const CardMainContent = props => {
     return (
         <div className="mainCard">
-            <MainContentTopArea/>
-            <MainContentDescriptionArea/>
+            <MainContentTopArea id={props.id} />
+            <MainContentDescriptionArea id={props.id} />
         </div>
     )
 };
